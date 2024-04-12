@@ -57,6 +57,7 @@
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>Age</th>
+                        <th>Position</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -66,11 +67,12 @@
                         <td>Anaking</td>
                         <td>purnama.anaking@gmail.com</td>
                         <td>20</td>
+                        <td>FE - Front End Developer</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('employees.show', ['employee' => 1]) }}"
                                     class="btn btn-outline-dark btn-sm me-2"><i class="bi-person-lines-fill"></i></a>
-                                <a href="{{ route('employees.edit', ['employee' => 1]) }}"
+                                <a href="{{ route('employees.edit', ['id' => 1]) }}"
                                     class="btn btn-outline-dark btn-sm me-2"><i class="bi-pencil-square"></i></a>
 
                                 <div>
@@ -89,11 +91,12 @@
                         <td>Rachmadhi</td>
                         <td>adzanil.rachmadhi@gmail.com</td>
                         <td>25</td>
+                        <td>BE - Back End Developer</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('employees.show', ['employee' => 2]) }}"
                                     class="btn btn-outline-dark btn-sm me-2"><i class="bi-person-lines-fill"></i></a>
-                                <a href="{{ route('employees.edit', ['employee' => 2]) }}"
+                                <a href="{{ route('employees.edit', ['id' => 2]) }}"
                                     class="btn btn-outline-dark btn-sm me-2"><i class="bi-pencil-square"></i></a>
 
                                 <div>
@@ -112,11 +115,12 @@
                         <td>Rahmy</td>
                         <td>berlian.rahmy@gmail.com</td>
                         <td>23</td>
+                        <td>SA - System Analist</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('employees.show', ['employee' => 3]) }}"
                                     class="btn btn-outline-dark btn-sm me-2"><i class="bi-person-lines-fill"></i></a>
-                                <a href="{{ route('employees.edit', ['employee' => 3]) }}"
+                                <a href="{{ route('employees.edit', ['id' => 3]) }}"
                                     class="btn btn-outline-dark btn-sm me-2"><i class="bi-pencil-square"></i></a>
 
                                 <div>

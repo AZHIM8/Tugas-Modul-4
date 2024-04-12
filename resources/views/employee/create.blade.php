@@ -69,11 +69,26 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="age" class="form-label">Age</label>
-                            <input class="form-control {{ $errors->any() ? ($errors->first('email') ? 'is-invalid' : 'is-valid') : '' }}" type="text" name="age" id="age" value="{{ old('age') }}" placeholder="Enter Age">
+                            <input class="form-control {{ $errors->any() ? ($errors->first('age') ? 'is-invalid' : 'is-valid') : '' }}" type="text" name="age" id="age" value="{{ old('age') }}" placeholder="Enter Age">
                             <div class="invalid-feedback">{{ $errors->first('age') }}</div>
                         </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="position" class="form-label">Position</label>
+                            <select name="position" id="position" class="form-select">
+                                <option value="1" selected>FE - Front End Developer</option>
+                                <option value="2" >BE - Back End Developer</option>
+                                <option value="3" >SA - System Analyst</option>
+                                @foreach ($positions as $position)
+                                <option value="{{ $position->id }}" {{ old('position') == $position->id ? 'selected' : '' }}>{{ $position->code.' - '.$position->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('position')
+                                <div class="text-danger"><small>{{ $message }}</small></div>
+                            @enderror
+                        </div>
+
                     </div>
-                    
+
                     <hr>
                     <div class="row">
                         <div class="col-md-6 d-grid">
