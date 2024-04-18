@@ -8,29 +8,35 @@
     @vite('resources/sass/app.scss')
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    @php
+    $currentRouteName = Route::currentRouteName();
+    @endphp
+
+    {{-- <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container">
             <a href="{{ route('home') }}" class="navbar-brand mb-0 h1"><i class="bi-hexagon-fill me-2"></i> Data Master</a>
-
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <button type="button" class="navbar-toggler" data-bstoggle="collapse" data-bs-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <hr class="d-lg-none text-white-50">
-
+                <hr class="d-md-none text-white-50">
                 <ul class="navbar-nav flex-row flex-wrap">
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('employees.index') }}" class="nav-link">Employee List</a></li>
+                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}" class="nav-link @if($currentRouteName ==
+    'home') active @endif">Home</a></li>
+                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('employees.index') }}" class="nav-link
+    @if($currentRouteName == 'employees.index') active
+    @endif">Employee</a></li>
                 </ul>
-
-                <hr class="d-lg-none text-white-50">
-
-                <a href="{{ route('profile') }}" class="btn btn-outline-light my-2 ms-md-auto"><i class="bi-person-circle me-1"></i> My Profile</a>
+                <hr class="d-md-none text-white-50">
+                <a href="{{ route('profile') }}" class="btn btn-outline-light
+    my-2 ms-md-auto"><i class="bi-person-circle me-1"></i> My Profile</a>
             </div>
         </div>
-    </nav>
+    </nav> --}}
 
+    @extends('layouts.app')
+
+    @section('content')
     <div class="container-sm mt-5">
         <form action="{{ route('employees.store') }}" method="POST">
             @csrf
@@ -75,9 +81,9 @@
                         <div class="col-md-12 mb-3">
                             <label for="position" class="form-label">Position</label>
                             <select name="position" id="position" class="form-select">
-                                <option value="1" selected>FE - Front End Developer</option>
+                                {{-- <option value="1" selected>FE - Front End Developer</option>
                                 <option value="2" >BE - Back End Developer</option>
-                                <option value="3" >SA - System Analyst</option>
+                                <option value="3" >SA - System Analyst</option> --}}
                                 @foreach ($positions as $position)
                                 <option value="{{ $position->id }}" {{ old('position') == $position->id ? 'selected' : '' }}>{{ $position->code.' - '.$position->name }}</option>
                                 @endforeach
@@ -102,7 +108,7 @@
             </div>
         </form>
     </div>
-
+    @endsection
     @vite('resources/js/app.js')
 </body>
 </html>

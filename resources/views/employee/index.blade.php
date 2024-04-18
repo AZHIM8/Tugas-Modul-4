@@ -10,33 +10,35 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-        <div class="container">
-            <a href="{{ route('home') }}" class="navbar-brand mb-0 h1"><i class="bi-hexagon-fill me-2"></i> Data
-                Master</a>
+    @php
+    $currentRouteName = Route::currentRouteName();
+    @endphp
 
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent">
+    {{-- <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container">
+            <a href="{{ route('home') }}" class="navbar-brand mb-0 h1"><i class="bi-hexagon-fill me-2"></i> Data Master</a>
+            <button type="button" class="navbar-toggler" data-bstoggle="collapse" data-bs-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <hr class="d-lg-none text-white-50">
-
+                <hr class="d-md-none text-white-50">
                 <ul class="navbar-nav flex-row flex-wrap">
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('employees.index') }}"
-                            class="nav-link active">Employee List</a></li>
+                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}" class="nav-link @if($currentRouteName ==
+    'home') active @endif">Home</a></li>
+                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('employees.index') }}" class="nav-link
+    @if($currentRouteName == 'employees.index') active
+    @endif">Employee</a></li>
                 </ul>
-
-                <hr class="d-lg-none text-white-50">
-
-                <a href="{{ route('profile') }}" class="btn btn-outline-light my-2 ms-md-auto"><i
-                        class="bi-person-circle me-1"></i> My Profile</a>
+                <hr class="d-md-none text-white-50">
+                <a href="{{ route('profile') }}" class="btn btn-outline-light
+    my-2 ms-md-auto"><i class="bi-person-circle me-1"></i> My Profile</a>
             </div>
         </div>
-    </nav>
+    </nav> --}}
 
+    @extends('layouts.app')
+
+    @section('content')
     <div class="container mt-4">
         <div class="row mb-0">
             <div class="col-lg-9 col-xl-10">
@@ -74,7 +76,6 @@
                                     class="btn btn-outline-dark btn-sm me-2"><i class="bi-person-lines-fill"></i></a>
                                 <a href="{{ route('employees.edit', ['id' => 1]) }}"
                                     class="btn btn-outline-dark btn-sm me-2"><i class="bi-pencil-square"></i></a>
-
                                 <div>
                                     <form action="{{ route('employees.destroy', ['employee' => 1]) }}" method="POST">
                                         @csrf
@@ -138,6 +139,7 @@
             </table>
         </div>
     </div>
+    @endsection
 
     @vite('resources/js/app.js')
 </body>
